@@ -1,0 +1,34 @@
+<settings>
+<servers>
+  <server>
+    <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+    <username>aws</username>
+    <password>eyJ2ZXIiOjEsImlzdSI6MTc0MDg2MzQwMywiZW5jIjoiQTEyOEdDTSIsInRhZyI6IlZWdGZjRkVMVTllRXMtUHE1WlVRRHciLCJleHAiOjE3NDA5MDY2MDMsImFsZyI6IkExMjhHQ01LVyIsIml2IjoiS2RadG4tNHpYSkpCbmZSRiJ9.QXMvH_laQjIit9-lPRV06Q.q7SPmy7uajlqUp5x.zmPBzW37fKM_vo72H-RxBZW4HzBy48GtomkDgICp5eEzgHwUaQZ3kBEdawdv0VVR7q8VlPQTzG0z9v7-VVnrP3oLxBeBK9Dzs5ZGloPZDoEemODiwMAP7xP21nappf-gMmQ7cxkvKRMoo-2xbhu6YwD3sYVQe-9AxMF65kEQlu5Lgzndx9jwYAvyixATg4cuuG2SjYdUrpQPLBf_6vJBcQJsyk2R6oTbJIvGpUXttimCzlydObEFtDf3G7vCZslMhO-WYtBZwNSWnqURq2-fqEDdNUOl3hvkWiPTq6K2gIGvytvWizxXzYK6dmWE7Sc4AXM1V-fDxuuzCk39LF5p5vLUCDQU7AdULj7AJi8tHXPFgPE_jv4rV1eLbdpOXNjGuI5j62BvElpKV4NDMSMTzcJhxRu6j8xduscBhRP6ItWi7wgAFynbeey-eWk6YXOs4T2MXnklhkc75tfJD1LgKaUMNrRW88HkpdTJOEJtjrYEyczie0lZRg4REJPVuhAg3jrH627w2UMpF06M7MbFOnmI7TFGTVZ2eQQQmDEYJg3_sb5DwvCQi4taegIun74MkXL9WzOj3Aph39xbLtJK2sm1w_YuhV3ya3Zhr63HDHKee5xTOH18kgO5h0gNrZVq6NZlO54wbTKfaurOqlt0vDRXHqr_7cCYwXEmjeCvUFdR7VC6XbPpa2BJkyjVCm0O6DZ0To7jzlxvutya-xgJ4rv2UUgaPTZNugCHfxtr_c-f7qHagUMTwTAEUVmNerALMdKh81rrkkIVbh_P1nfawEA9P60doSdWvHSpGKkQia1izHgkK46gPXWbb-2225TbYtPynp9j_ZPFvqt2D-hgT8dAIhGk3wNe9lhnYBf78kKnx5jyR0V2eRCMnlbYUyDx38nOgTPF9D6_2QQEX1yzYDbjmJqMPxLWn-MQ_7dS0KUU97S7PXYyRiU1jqD6lHzjmxgkh7sOWnNpcnRxUO40Z17Ka2eU8mv9L7uDBgOe7_zvfsnWtA.7iQ9uE2D1r8nsj2vTHZqiw</password>
+  </server>
+</servers>
+
+<profiles>
+  <profile>
+    <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <repositories>
+      <repository>
+        <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+        <url>https://lankirix-nextwork-domain-064370794857.d.codeartifact.eu-central-1.amazonaws.com/maven/lankirix-nextwork-packages/</url>
+      </repository>
+    </repositories>
+  </profile>
+</profiles>
+
+<mirrors>
+  <mirror>
+    <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+    <name>lankirix-nextwork-domain-lankirix-nextwork-packages</name>
+    <url>https://lankirix-nextwork-domain-064370794857.d.codeartifact.eu-central-1.amazonaws.com/maven/lankirix-nextwork-packages/</url>
+    <mirrorOf>*</mirrorOf>
+  </mirror>
+</mirrors>
+
+</settings>
