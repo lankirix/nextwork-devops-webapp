@@ -13,9 +13,5 @@
 
 </body>
 
-=======
-<body>
-<h2>Hello good people!</h2>
-</body>
->>>>>>> e14fbf5 (Updated index.jsp with new content)
-</html>
+
+
