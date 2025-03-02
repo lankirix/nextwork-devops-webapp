@@ -1,0 +1,51 @@
+<settings>
+  <servers>
+    <server>
+      <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+      <username>aws</username>
+      <password>${CODEARTIFACT_AUTH_TOKEN}</password> 
+    </server>
+  </servers>
+
+  <mirrors>
+    <mirror>
+      <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+      <name>lankirix-nextwork-domain-lankirix-nextwork-packages</name>
+      <url>https://lankirix-nextwork-domain-064370794857.d.codeartifact.eu-central-1.amazonaws.com/maven/lankirix-nextwork-packages/</url>
+      <mirrorOf>lankirix-nextwork-domain-lankirix-nextwork-packages,!central</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+          <url>https://lankirix-nextwork-domain-064370794857.d.codeartifact.eu-central-1.amazonaws.com/maven/lankirix-nextwork-packages/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>lankirix-nextwork-domain-lankirix-nextwork-packages</id>
+          <url>https://lankirix-nextwork-domain-064370794857.d.codeartifact.eu-central-1.amazonaws.com/maven/lankirix-nextwork-packages/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+</settings>
