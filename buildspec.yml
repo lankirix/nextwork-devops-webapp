@@ -4,19 +4,28 @@ phases:
   install:
     runtime-versions:
       java: corretto8
+
   pre_build:
     commands:
-      - echo Initializing environment
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain lankirix-nextwork-domain --domain-owner 064370794857 --query authorizationToken --output text`
+      - echo "Initializing environment"
+      - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain lankirix-nextwork-domain --domain-owner 064370794857 --query authorizationToken --output text)
+      - echo "Checking if settings.xml exists..."
+      - ls -l settings.xml || echo "settings.xml NOT FOUND!"  # Debugging check
+      - ls -l nextwork-devops-webapp/  # Debugging check
+
   build:
     commands:
-      - echo Build started on `date`
-      - mvn -s settings.xml compile
+      - echo "Build started on $(date)"
+      - cd nextwork-devops-webapp
+      - mvn -s ../settings.xml clean compile  # Ensure clean build
+
   post_build:
     commands:
-      - echo Build completed on `date`
-      - mvn -s settings.xml package
+      - echo "Build completed on $(date)"
+      - cd nextwork-devops-webapp
+      - mvn -s ../settings.xml package
+
 artifacts:
   files:
-    - target/nextwork-web-project.war
+    - nextwork-devops-webapp/target/nextwork-web-project.war
   discard-paths: no
