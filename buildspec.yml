@@ -11,21 +11,21 @@ phases:
       - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain lankirix-nextwork-domain --domain-owner 064370794857 --query authorizationToken --output text)
       - echo "Checking if settings.xml exists..."
       - ls -l $CODEBUILD_SRC_DIR/settings.xml || echo "settings.xml NOT FOUND!"  # Debugging check
-      - ls -l $CODEBUILD_SRC_DIR/nextwork-devops-webapp/  # Debugging check
+      - ls -l $CODEBUILD_SRC_DIR/  # Changed this line to list root directory contents
 
   build:
     commands:
       - echo "Build started on $(date)"
-      - cd $CODEBUILD_SRC_DIR/nextwork-devops-webapp  # Ensure correct directory
+      - cd $CODEBUILD_SRC_DIR  # Changed to use root directory instead of subdirectory
       - mvn -s $CODEBUILD_SRC_DIR/settings.xml clean compile  # Absolute path to settings.xml
 
   post_build:
     commands:
       - echo "Build completed on $(date)"
-      - cd $CODEBUILD_SRC_DIR/nextwork-devops-webapp
+      - cd $CODEBUILD_SRC_DIR  # Changed to use root directory instead of subdirectory
       - mvn -s $CODEBUILD_SRC_DIR/settings.xml package  # Ensure correct settings.xml reference
 
 artifacts:
   files:
-    - nextwork-devops-webapp/target/nextwork-web-project.war
+    - target/nextwork-web-project.war  # Changed the path to match your structure
   discard-paths: no
