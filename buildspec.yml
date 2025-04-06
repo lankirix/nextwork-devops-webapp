@@ -7,15 +7,15 @@ phases:
     commands:
       - echo Initializing environment
       - TOKEN=$(aws codeartifact get-authorization-token --domain nextwork --domain-owner 064370794857 --query authorizationToken --output text)
-      - export CODEARTIFACT_AUTH_TOKEN=$TOKEN
+      - export CODEARTIFACT_AUTH_TOKEN="$TOKEN"
       - echo "CodeArtifact Token: $CODEARTIFACT_AUTH_TOKEN"
   build:
     commands:
-      - echo Build started on `date`
+      - echo "Build started on `date`"
       - mvn -s settings.xml -X package
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo "Build completed on `date`"
 artifacts:
   files:
     - target/nextwork-web-project.war
