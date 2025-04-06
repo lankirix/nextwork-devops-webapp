@@ -1,26 +1,21 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
       java: corretto8
-
   pre_build:
     commands:
       - echo Initializing environment
       - TOKEN=$(aws codeartifact get-authorization-token --domain nextwork --domain-owner 064370794857 --query authorizationToken --output text)
       - export CODEARTIFACT_AUTH_TOKEN=$TOKEN
-      - echo 'CodeArtifact Token: $CODEARTIFACT_AUTH_TOKEN'
-
+      - echo "CodeArtifact Token: $CODEARTIFACT_AUTH_TOKEN"
   build:
     commands:
       - echo Build started on `date`
-      - mvn -s settings.xml -X package # Use -X for debug logging
-
+      - mvn -s settings.xml -X package
   post_build:
     commands:
       - echo Build completed on `date`
-
 artifacts:
   files:
     - target/nextwork-web-project.war
