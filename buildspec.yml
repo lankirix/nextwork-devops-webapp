@@ -6,16 +6,25 @@ phases:
   pre_build:
     commands:
       - echo "Initializing environment"
-      - "aws codeartifact get-authorization-token --domain nextwork --domain-owner 064370794857 --query authorizationToken --output text > token.txt"
-      - "export CODEARTIFACT_AUTH_TOKEN=$(cat token.txt)"
-      - "echo \"CodeArtifact Token retrieved\""
+      - echo "Setting AWS region to eu-central-1"
+      - export AWS_DEFAULT_REGION=eu-central-1
+      - aws --version
+      - echo "Attempting to get CodeArtifact token..."
+      - |
+        if ! TOKEN=$(aws codeartifact get-authorization-token --domain nextwork --domain-owner 064370794857 --query authorizationToken --output text --region eu-central-1); then
+          echo "Failed to get CodeArtifact token. Check IAM permissions and region settings."
+          aws sts get-caller-identity
+          exit 1
+        fi
+      - export CODEARTIFACT_AUTH_TOKEN="$TOKEN"
+      - echo "CodeArtifact Token retrieved successfully"
   build:
     commands:
-      - "echo \"Build started on $(date)\""
-      - "mvn -s settings.xml -X package"
+      - echo "Build started on $(date)"
+      - mvn -s settings.xml -X package
   post_build:
     commands:
-      - "echo \"Build completed on $(date)\""
+      - echo "Build completed on $(date)"
 artifacts:
   files:
     - target/nextwork-web-project.war
