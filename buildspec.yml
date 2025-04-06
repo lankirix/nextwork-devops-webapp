@@ -1,8 +1,10 @@
 version: 0.2
+
 phases:
   install:
     runtime-versions:
       java: corretto8
+
   pre_build:
     commands:
       - echo "Creating build scripts"
@@ -10,14 +12,17 @@ phases:
       - ./create-script.sh
       - chmod +x ./prebuild.sh
       - ./prebuild.sh
+
   build:
     commands:
       - echo "Running build"
       - mvn -s settings.xml package
+
   post_build:
     commands:
       - echo "Build completed"
+
 artifacts:
   files:
     - target/nextwork-web-project.war
-  discard-paths: nos
+  discard-paths: false # Preserve directory structure
