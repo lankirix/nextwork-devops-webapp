@@ -10,7 +10,7 @@ phases:
       - echo Initializing environment
       - TOKEN=$(aws codeartifact get-authorization-token --domain nextwork --domain-owner 064370794857 --query authorizationToken --output text)
       - export CODEARTIFACT_AUTH_TOKEN=$TOKEN
-      - echo "CodeArtifact Token: $CODEARTIFACT_AUTH_TOKEN" # Debugging step
+      - echo 'CodeArtifact Token: $CODEARTIFACT_AUTH_TOKEN'
 
   build:
     commands:
