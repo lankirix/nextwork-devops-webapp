@@ -5,27 +5,18 @@ phases:
       java: corretto8
   pre_build:
     commands:
-      - echo "=== ENVIRONMENT INFORMATION ==="
-      - export AWS_DEFAULT_REGION=eu-central-1
-      - echo "AWS Region: $AWS_DEFAULT_REGION"
-      - aws --version
-      - echo "=== CALLER IDENTITY ==="
-      - aws sts get-caller-identity
-      - echo "=== CODEARTIFACT AUTH ATTEMPT ==="
-      # Try with explicit arguments
-      - echo "Attempting CodeArtifact auth with explicit parameters..."
-      - aws codeartifact get-authorization-token --domain nextwork --domain-owner 064370794857 --region eu-central-1
-      # If the above doesn't work, we'll continue the build anyway
-      - echo "=== CONTINUING WITH BUILD ==="
-      - echo "Proceeding with build even if token retrieval failed"
+      - echo "Creating build scripts"
+      - chmod +x ./create-script.sh
+      - ./create-script.sh
+      - chmod +x ./prebuild.sh
+      - ./prebuild.sh
   build:
     commands:
-      - echo "Build started on $(date)"
-      # Remove the -X flag to reduce log verbosity if not needed for debugging
+      - echo "Running build"
       - mvn -s settings.xml package
   post_build:
     commands:
-      - echo "Build completed on $(date)"
+      - echo "Build completed"
 artifacts:
   files:
     - target/nextwork-web-project.war
